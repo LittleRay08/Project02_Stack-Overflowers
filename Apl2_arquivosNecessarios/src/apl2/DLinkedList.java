@@ -20,14 +20,14 @@ package apl2;
 public class DLinkedList {
 	private Node head;
 	private Node tail;
-	private int cont;
+	private int count;
 
 // OPERAÇÃO:		Método construtor
 // COMPORTAMENTO:	Cria uma lista vazia.
 	public DLinkedList() {
 		head = null;
 		tail= null;
-		cont= 0;
+		count= 0;
 	}
 
 // OPERAÇÃO:		insert(<dados da pessoa>)
@@ -41,15 +41,23 @@ public class DLinkedList {
 			head.setAnt(aux);
 			head=aux;
 		}
+		count++;
 	}
 
 
 // OPERAÇÃO:		append(<dados da pessoa>)
 // COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
 //					novo nó no final da lista.
-	public void append(/*dados da pessoa*/) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+	public void append(String id, String nome, float nota) {
+		Node aux= new Node(id,nome,nota );
+		if(isEmpty()){
+			head = tail = aux;
+		}else{
+			aux.setAnt(tail);
+			tail.setProx(aux);
+			tail=aux;
+		}
+		count++;
 	}
 
 
@@ -58,8 +66,18 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeHead() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if(isEmpty()) return null; 
+
+		Node removido = head;
+		if(count==1){
+			head=tail=null;
+		}
+		else{
+			head= head.getProx();
+			head.setAnt(null);
+		}
+		count--;
+		return removido;
 	}
 
 
@@ -68,8 +86,19 @@ public class DLinkedList {
 //					nó removido.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node removeTail() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if(isEmpty()) return null; 
+
+		Node removido = tail;
+		if(count==1){
+			head=tail=null;
+		}
+		else{
+			tail=tail.getAnt();
+			tail.setProx(null);
+
+		}
+		count--;
+		return removido;
 	}
 
 
@@ -78,8 +107,32 @@ public class DLinkedList {
 //					a referência do nó removido.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node removeNode(String id) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+//ver se ta vazia
+		if(isEmpty()) return null;
+//ver se encontrou
+		Node removido = getNode(id);
+		if (removido == null) return null;
+//se tiver so um elemento
+		if (count == 1) {
+			head = tail = null;
+			count--;
+			return removido;
+		}
+//se achou no head
+		if (removido == head) {
+			return removeHead(); // já atualiza count e retorna
+		}
+//se achou no tail
+		if (removido == tail) {
+			return removeTail(); // já atualiza count e retorna
+		}
+	
+// Se chegou aqui, o nó está no meio da lista
+		removido.getAnt().setProx(removido.getProx());
+		removido.getProx().setAnt(removido.getAnt());
+		count--;
+	
+		return removido;
 	}
 
 
@@ -87,8 +140,7 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do início da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getHead() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return head;
 	}
 
 
@@ -96,8 +148,7 @@ public class DLinkedList {
 // COMPORTAMENTO:	Retorna uma referência para o nó do final da lista.
 //					Ou retorna null caso a lista esteja vazia.
 	public Node getTail() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return tail;
 	}
 
 
@@ -106,41 +157,74 @@ public class DLinkedList {
 //					da lista.
 //					Ou retorna null caso não exista um nó com <ID da pessoa>.
 	public Node getNode(String id) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+
+		if(isEmpty()) return null; 
+
+		Node aux = head;
+		
+		while (aux != null) {
+			if (aux.getId().equals(id)) {
+				return aux;
+			}
+			aux = aux.getProx();
+		}
+		return null; // Se não encontrar
 	}
 
 
 // OPERAÇÃO:		count()
 // COMPORTAMENTO:	Retorna a quantidade de nós da lista.
 	public int count() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return count;
 	}
 
 
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
 	public boolean isEmpty() {
-		return (cont==0);
+		return (count==0);
 	}
 
 
 // OPERAÇÃO:		clear()
 // COMPORTAMENTO:	Esvazia a lista, liberando a memória de todos os nós da lista.
 	public void clear() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		if(isEmpty()) return;
+
+		while(head!=null) removeHead();
+
 	}
 
 
 // OPERAÇÃO:		toString()
 // COMPORTAMENTO:	Retorna uma string com o conteúdo da lista (caso queira, use o
 //					exemplo do método toString() da classe LinkedListOriginal).
-	@Override
-	public String toString() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
-	}
+@Override
+public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("(").append(count).append(")\n\n");
+
+    Node node = head;
+    while (node != null) {
+        // Proteção contra ponteiros nulos
+        String antId = (node.getAnt() == null) ? "null" : node.getAnt().getId();
+        String proxId = (node.getProx() == null) ? "null" : node.getProx().getId();
+		//montar impressao
+        sb.append(antId)
+          .append(" <- (")
+          .append(node.getId())
+          .append(" ; ")
+          .append(node.getNome())
+          .append(" ; ")
+          .append(node.getNota())
+          .append(") -> ")
+          .append(proxId)
+          .append("\n");
+
+        node = node.getProx();
+    }
+
+    return sb.toString();
+}
 
 }
