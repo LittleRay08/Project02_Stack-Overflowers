@@ -1,6 +1,9 @@
 // arquivo: src/apl2/DLinkedList.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+// Nome: Jully Manuele Dias Lima - RA: 10420556
+// Nome: Leonardo Silva Moreno Ruiz - RA: 10420477
+// Nome: Pedro Moniz Canto - RA: 10418358
+// Nome: Rayane Yumi Da Silva Tahara - RA: 10410892
 
 package apl2;
 
@@ -15,24 +18,29 @@ package apl2;
 // comportamento descrito em cada operação.
 
 public class DLinkedList {
-	
-	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
-
+	private Node head;
+	private Node tail;
+	private int cont;
 
 // OPERAÇÃO:		Método construtor
 // COMPORTAMENTO:	Cria uma lista vazia.
 	public DLinkedList() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		head = null;
+		tail= null;
+		cont= 0;
 	}
 
-
 // OPERAÇÃO:		insert(<dados da pessoa>)
-// COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o
-//					novo nó no início da lista.
-	public void insert(/*dados da pessoa*/) {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+// COMPORTAMENTO:	Aloca um Node que contém os <dados da pessoa> e insere o novo nó no início da lista.
+	public void insert(String id, String nome, float nota) {
+		Node aux= new Node(id,nome,nota );
+		if(isEmpty()){
+			head = tail = aux;
+		}else{
+			aux.setProx(head);
+			head.setAnt(aux);
+			head=aux;
+		}
 	}
 
 
@@ -114,8 +122,7 @@ public class DLinkedList {
 // OPERAÇÃO:		isEmpty()
 // COMPORTAMENTO:	Retorna true se a lista estiver vazia ou false, caso contrário.
 	public boolean isEmpty() {
-		// TODO: Implementar o método e remover o lançamento de exceção abaixo.
-		throw new UnsupportedOperationException("Método ainda não implementado.");
+		return (cont==0);
 	}
 
 

@@ -5,7 +5,11 @@
 //*************************** ATENÇÃO! ****************************
 // arquivo: src/MainApl2.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+// Nome: Jully Manuele Dias Lima - RA: 10420556
+// Nome: Leonardo Silva Moreno Ruiz - RA: 10420477
+// Nome: Pedro Moniz Canto - RA: 10418358
+// Nome: Rayane Yumi Da Silva Tahara - RA: 10410892
+
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
 
 import apl2.DLinkedList;
