@@ -12,6 +12,10 @@
 
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import apl2.DLinkedList;
 import apl2.LinkedListOriginal;
 import apl2.Node;
@@ -24,6 +28,22 @@ public class MainApl2 {
 
 		
 		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
+		try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\jully\\OneDrive\\Documentos\\GitHub\\Project02_Stack-Overflowers\\Apl2_arquivosNecessarios\\dados.txt"))) {
+			String linha;
+			while ((linha = br.readLine()) != null) { //pecorrer arquivo
+				String[] partes = linha.split("#"); //separa quando encontra #
+				if (partes.length == 4) {
+					int id = Integer.parseInt(partes[0]);         
+					String nome = partes[1];
+					int inteiro = Integer.parseInt(partes[2]);
+					int decimo = Integer.parseInt(partes[3]);
+		
+					list.append(id, nome, inteiro, decimo);  //adiciona dados na lista original
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+		}
 
 		
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
