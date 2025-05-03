@@ -28,7 +28,7 @@ public class MainApl2 {
 
 		
 		// TODO: Carregar o conteúdo do arquivo "dados.txt" e adicionar cada linha como um nó na LinkedListOriginal list.
-		try (BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\jully\\OneDrive\\Documentos\\GitHub\\Project02_Stack-Overflowers\\Apl2_arquivosNecessarios\\dados.txt"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader("Apl2_arquivosNecessarios\\dados.txt"))) {
 			String linha;
 			while ((linha = br.readLine()) != null) { //pecorrer arquivo
 				String[] partes = linha.split("#"); //separa quando encontra #
