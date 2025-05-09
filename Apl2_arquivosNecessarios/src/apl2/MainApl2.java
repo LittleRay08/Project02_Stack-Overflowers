@@ -15,8 +15,13 @@ package apl2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
+
 
 public class MainApl2 {
 	
@@ -44,6 +49,8 @@ public class MainApl2 {
 		} catch (IOException e) {
 			System.out.println("Erro ao ler o arquivo: " + e.getMessage()); //colocar em casos de uso quando da errado
 		}
+
+		/* 
 		DLinkedList fixedList = null;
 		DLinkedList filteredGradedList = null;
 		DLinkedList filteredNonGradedList = null;
@@ -112,7 +119,8 @@ public class MainApl2 {
 					break;
 			}
 		}
-/*	 
+		*/
+ 
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);
 		System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<\n");
@@ -148,7 +156,14 @@ public class MainApl2 {
 		System.out.println("<<<<<<<<<< Lista mapeada para uma única string <<<<<<<<<<\n");
 	
 		// TODO: Salvar o conteúdo da String contents em um arquivo chamado "dados.csv".
+		String arquivoCSV = "dados.csv";
 
+		try (FileWriter writer = new FileWriter(arquivoCSV)) {
+                writer.append(contents);
+            System.out.println("\nArquivo CSV criado com sucesso!\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		
 		Node test1 = fixedList.getNode("23.S1-999");
 		System.out.println(">>>>>>>>>> test1 >>>>>>>>>>\n" + test1 + "\n<<<<<<<<<< test1 <<<<<<<<<<\n");
@@ -198,8 +213,6 @@ public class MainApl2 {
 		testList.clear();
 		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");
 	}
-*/
 
 }
 
-}
