@@ -13,6 +13,8 @@ package apl2;
 
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
 
+/* */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -49,16 +51,17 @@ public class MainApl2 {
 		} catch (IOException e) {
 			System.out.println("Erro ao ler o arquivo: " + e.getMessage()); //colocar em casos de uso quando da errado
 		}
+	
 
-		/* 
 		DLinkedList fixedList = null;
 		DLinkedList filteredGradedList = null;
 		DLinkedList filteredNonGradedList = null;
 		DLinkedList aboveAverageList = null;
 		float average = 0f;
 		String contents = null;
-
+		int cont = 0;
 		int opcao = -1;
+
 		while(opcao != 0){
 			System.out.println("\n================== Sistema Conversor de Notas ==================");
             System.out.println("1 - Exibir Dados Originais");
@@ -69,6 +72,7 @@ public class MainApl2 {
             System.out.println("6 - Notas Acima Da Média");
             System.out.println("7 - Lista Mapeada P/ Uma Única String");
             System.out.println("0 - Sair");
+			System.out.println("OBS: coloque a op");
             System.out.print("Escolha uma opção: ");
             opcao = sc.nextInt();
 
@@ -77,12 +81,17 @@ public class MainApl2 {
 					System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 					System.out.println(list);
 					System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<\n");
+					cont=1;
 					break;
 				case 2:
+					if (cont==0){
+						System.out.println("Para fazer a opção 2 é necessario ter feito a 1");
+					}
 					fixedList = Operation.map(list);
 					System.out.println(">>>>>>>>>> Dados convertidos para a nova representação dos dados >>>>>>>>>>");
 					System.out.println(fixedList);
 					System.out.println("<<<<<<<<<< Dados convertidos para a nova representação dos dados <<<<<<<<<<\n");
+
 					break;
 				case 3:
 					filteredGradedList = Operation.filterRemoveNonGraded(fixedList);
@@ -119,8 +128,9 @@ public class MainApl2 {
 					break;
 			}
 		}
-		*/
- 
+
+/*
+
 		System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 		System.out.println(list);
 		System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<\n");
@@ -212,7 +222,7 @@ public class MainApl2 {
 		System.out.println(">>>>>>>>>> testList >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList <<<<<<<<<<\n");
 		testList.clear();
 		System.out.println(">>>>>>>>>> testList.clear() >>>>>>>>>>\n" + testList  + "\n<<<<<<<<<< testList.clear() <<<<<<<<<<\n");
-	}
-
+	*/
+		}
 }
 
