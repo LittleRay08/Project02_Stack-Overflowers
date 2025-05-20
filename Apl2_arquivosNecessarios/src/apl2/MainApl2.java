@@ -59,7 +59,6 @@ public class MainApl2 {
 		DLinkedList aboveAverageList = null;
 		float average = 0f;
 		String contents = null;
-		int cont = 0;
 		int opcao = -1;
 
 		while(opcao != 0){
@@ -81,12 +80,8 @@ public class MainApl2 {
 					System.out.println(">>>>>>>>>> Dados originais (sistema legado) >>>>>>>>>>");
 					System.out.println(list);
 					System.out.println("<<<<<<<<<< Dados originais (sistema legado) <<<<<<<<<<\n");
-					cont=1;
 					break;
 				case 2:
-					if (cont==0){
-						System.out.println("Para fazer a opção 2 é necessario ter feito a 1");
-					}
 					fixedList = Operation.map(list);
 					System.out.println(">>>>>>>>>> Dados convertidos para a nova representação dos dados >>>>>>>>>>");
 					System.out.println(fixedList);
